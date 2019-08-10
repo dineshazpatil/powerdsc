@@ -46,3 +46,29 @@ $updatestudent = @{
    #$cred = Get-Credential 
 
    Invoke-RestMethod -Uri $deleteurl -Method Delete -Credential $cred
+   
+   
+   $site = Invoke-WebRequest http://www.bing.com
+
+$site | gm
+
+$site.StatusCode
+$site.StatusDescription
+
+#Download files
+
+$param = @{URI="https://download.sysinternals.com/files/SysinternalsSuite.zip";Outfile = "C:\demo\sys.zip" }
+Invoke-RestMethod @param
+
+to download large file
+
+$url = "https://download.sysinternals.com/files/SysinternalsSuite.zip"
+$target = "C:\Demo\sys1.zip"
+
+Import-Module BitsTransfer
+Start-BitsTransfer -Source $url -Destination $target -DisplayName Mysysdownload -Asynchronous
+
+
+
+   
+   
